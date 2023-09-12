@@ -2,6 +2,7 @@
 :: vcpkg.exe search gmp
 :: vcpkg.exe search mpir
 
+echo "ON WINDOWS (Visual Studio), USE: Developer Command Prompt"
 echo "REMEMBER TO RUN: .\tools\vcpkg\bootstrap-vcpkg.bat"
 
 :: vcpkg.exe integrate install
