@@ -5,7 +5,7 @@ git pull --recurse-submodules
 
 conan profile detect
 
-VCPKG_DIR=./deps/vcpkg
+VCPKG_DIR=./tools/vcpkg
 VCPKG_TRIPLET=x64-windows-static
 VCPKG_BOOTSTRAP=bootstrap-vcpkg.bat
 
@@ -18,7 +18,7 @@ fi
 echo "VCPKG_TRIPLET=$VCPKG_TRIPLET"
 echo "VCPKG_DIR=$VCPKG_DIR"
 
-mkdir -p deps
+mkdir -p tools
 git submodule add https://github.com/microsoft/vcpkg $VCPKG_DIR
 
 (cd $VCPKG_DIR && git checkout master && git pull)

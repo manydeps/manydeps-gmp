@@ -1,9 +1,9 @@
 @echo off
 
-deps/vcpkg/vcpkg search gmp
+tools/vcpkg/vcpkg search gmp
 
-deps/vcpkg/vcpkg search mpir
+tools/vcpkg/vcpkg search mpir
 
-deps/vcpkg/vcpkg integrate install
+tools/vcpkg/vcpkg integrate install
 
-deps/vcpkg/vcpkg install
+tools/vcpkg/vcpkg install
