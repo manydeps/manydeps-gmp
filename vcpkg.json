@@ -10,5 +10,16 @@
             "name": "gmp",
             "platform": "!windows"
         }
-    ]
+    ],
+    "default-features": [
+        "catch2"
+    ],
+    "features": {
+        "catch2": {
+            "description": "Test library",
+            "dependencies": [
+                "catch2"
+            ]
+        }
+    }
 }
