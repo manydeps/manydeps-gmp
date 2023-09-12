@@ -2,7 +2,7 @@
 :: vcpkg.exe search gmp
 :: vcpkg.exe search mpir
 
-.\tools\vcpkg\bootstrap-vcpkg.bat
+echo "REMEMBER TO RUN: .\tools\vcpkg\bootstrap-vcpkg.bat"
 
 :: vcpkg.exe integrate install
 .\tools\vcpkg\vcpkg.exe --vcpkg-root .\tools\vcpkg integrate install
