@@ -47,15 +47,23 @@ pkg_check_modules(gmpxx REQUIRED IMPORTED_TARGET gmpxx)
 #
 add_library(gmp::gmp ALIAS PkgConfig::gmp)
 add_library(gmp::gmpxx ALIAS PkgConfig::gmpxx)
+#
+target_link_libraries(app_demo PRIVATE gmp::gmp)
+#
 else() # WINDOWS?
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 # invoke FindGMP.cmake
-find_package(GMP REQUIRED)
-message(STATUS "MAIN GMP FOUND!" ${GMP_FOUND})
+# find_package(GMP REQUIRED)
+# message(STATUS "MAIN GMP FOUND!" ${GMP_FOUND})
+#
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
+include_directories("${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/include")
+link_directories("${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib")
+set(MPIR_LIBS "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib/mpir.lib" "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib/mpirxx.lib")
 endif()
 
-target_link_libraries(app_demo PRIVATE gmp::gmp)
+target_link_libraries(app_demo PRIVATE "${MPIR_LIBS}")
 
 # TO HELP DEBUG, CHECK THESE VARIABLES
 #message(STATUS "MAIN CMAKE_LIBRARY_PATH:" "${CMAKE_LIBRARY_PATH}")
@@ -87,4 +95,11 @@ include(Catch)
 # this is heuristically generated, and may not be correct
 add_executable(my_test tests/depbox_gmp.test.cpp)
 #find_package(Catch2 CONFIG REQUIRED)
+
+if(UNIX)
 target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain gmp::gmp gmp::gmpxx)
+else() # WINDOWS?
+target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain mpir)
+endif()
+
+
