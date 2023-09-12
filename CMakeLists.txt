@@ -33,14 +33,25 @@ if(UNIX)
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-linux")
 else() # WINDOWS?
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static")
+set(GMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/include")
+set(GMP_LIBRARIES "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib") 
 endif()
 
+# PkgConfig from vcpkg only working on Linux!
+# On Windows, do it manually with FindGMP
+
+if(UNIX)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(gmp REQUIRED IMPORTED_TARGET gmp)
 pkg_check_modules(gmpxx REQUIRED IMPORTED_TARGET gmpxx)
-
+#
 add_library(gmp::gmp ALIAS PkgConfig::gmp)
 add_library(gmp::gmpxx ALIAS PkgConfig::gmpxx)
+else() # WINDOWS?
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
+# invoke FindGMP.cmake
+find_package(GMP REQUIRED)
+endif()
 
 target_link_libraries(app_demo PRIVATE gmp::gmp)
 
