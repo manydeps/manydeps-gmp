@@ -36,6 +36,7 @@ pkg_check_modules(gmp REQUIRED IMPORTED_TARGET gmp)
 pkg_check_modules(gmpxx REQUIRED IMPORTED_TARGET gmpxx)
 
 add_library(gmp::gmp ALIAS PkgConfig::gmp)
+add_library(gmp::gmpxx ALIAS PkgConfig::gmpxx)
 
 target_link_libraries(app_demo PRIVATE gmp::gmp)
 
@@ -69,4 +70,4 @@ target_link_libraries(app_demo PRIVATE gmp::gmp)
 # this is heuristically generated, and may not be correct
 add_executable(my_test tests/depbox_gmp.test.cpp)
 find_package(Catch2 CONFIG REQUIRED)
-target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain gmp::gmp)
+target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain gmp::gmp gmp::gmpxx)
