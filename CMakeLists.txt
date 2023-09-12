@@ -57,13 +57,15 @@ set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 # find_package(GMP REQUIRED)
 # message(STATUS "MAIN GMP FOUND!" ${GMP_FOUND})
 #
-set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
-include_directories("${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/include")
-link_directories("${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib")
-set(MPIR_LIBS "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib/mpir.lib" "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/lib/mpirxx.lib")
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules") # ???
+set(VCPKG_WINDOWS "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static")
+include_directories("${VCPKG_WINDOWS}/include")
+link_directories("${VCPKG_WINDOWS}/lib")
+#
+set(MPIR_LIB_PATH "${VCPKG_WINDOWS}/lib")
+target_link_libraries(app_demo PRIVATE "${MPIR_LIB_PATH}/mpir.lib" "${MPIR_LIB_PATH}/mpirxx.lib")
 endif()
 
-target_link_libraries(app_demo PRIVATE "${MPIR_LIBS}")
 
 # TO HELP DEBUG, CHECK THESE VARIABLES
 #message(STATUS "MAIN CMAKE_LIBRARY_PATH:" "${CMAKE_LIBRARY_PATH}")
