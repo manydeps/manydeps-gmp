@@ -18,5 +18,6 @@ TEST_CASE("Teste2-X") {
   a = 1234;
   b = "-5678";
   c = a + b;
-  REQUIRE(c == -4444);
+  bool r = (c == -4444);
+  REQUIRE(r);
 }
