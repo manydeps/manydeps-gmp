@@ -48,9 +48,11 @@ pkg_check_modules(gmpxx REQUIRED IMPORTED_TARGET gmpxx)
 add_library(gmp::gmp ALIAS PkgConfig::gmp)
 add_library(gmp::gmpxx ALIAS PkgConfig::gmpxx)
 else() # WINDOWS?
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 # invoke FindGMP.cmake
 find_package(GMP REQUIRED)
+message(STATUS "MAIN GMP FOUND!" ${GMP_FOUND})
 endif()
 
 target_link_libraries(app_demo PRIVATE gmp::gmp)
@@ -68,14 +70,14 @@ target_link_libraries(app_demo PRIVATE gmp::gmp)
 #==========
 #  TESTS
 #----------
-#Include(FetchContent)
+Include(FetchContent)
 #
-#FetchContent_Declare(Catch2 GIT_REPOSITORY https://github.com/catchorg/Catch2.git GIT_TAG v3.3.1)
-#FetchContent_MakeAvailable(Catch2)
+FetchContent_Declare(Catch2 GIT_REPOSITORY https://github.com/catchorg/Catch2.git GIT_TAG v3.3.1)
+FetchContent_MakeAvailable(Catch2)
 #
-#list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
-#include(CTest)
-#include(Catch)
+list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
+include(CTest)
+include(Catch)
 #
 #add_executable(my_test tests/get_data.test.cpp)
 #target_link_libraries(my_test PRIVATE brkpg_biblioteca Minha_pasta_external Catch2::Catch2WithMain)
@@ -84,5 +86,5 @@ target_link_libraries(app_demo PRIVATE gmp::gmp)
 
 # this is heuristically generated, and may not be correct
 add_executable(my_test tests/depbox_gmp.test.cpp)
-find_package(Catch2 CONFIG REQUIRED)
+#find_package(Catch2 CONFIG REQUIRED)
 target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain gmp::gmp gmp::gmpxx)
