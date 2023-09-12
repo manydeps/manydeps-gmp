@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+    "builtin-baseline": "962e5e39f8a25f42522f51fffc574e05a3efd26b",
+    "dependencies": [
+        {
+            "name": "mpir",
+            "platform": "windows & x64"
+        },
+        {
+            "name": "gmp",
+            "platform": "!windows"
+        }
+    ]
+}
