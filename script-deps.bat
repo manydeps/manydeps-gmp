@@ -6,4 +6,4 @@ vcpkg.exe search mpir
 
 vcpkg.exe integrate install
 
-vcpkg.exe install
+vcpkg.exe install --triplet=x64-windows-static
