@@ -34,7 +34,7 @@
             "name": "win-x64-release",
             "displayName": "x64 Release",
             "inherits": "win-x64-debug",
-            "toolchainFile": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "toolchainFile": "${sourceDir}/tools/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }

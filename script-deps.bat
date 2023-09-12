@@ -2,9 +2,13 @@
 :: vcpkg.exe search gmp
 :: vcpkg.exe search mpir
 
-vcpkg.exe integrate install
+.\tools\vcpkg\bootstrap-vcpkg.bat
 
-vcpkg.exe install --triplet=x64-windows-static
+:: vcpkg.exe integrate install
+.\tools\vcpkg\vcpkg.exe --vcpkg-root .\tools\vcpkg integrate install
+
+:: vcpkg.exe install --triplet=x64-windows-static
+.\tools\vcpkg\vcpkg.exe --vcpkg-root .\tools\vcpkg install --triplet=x64-windows-static
 
 cmake -B build -S .
 
