@@ -63,7 +63,7 @@ include_directories("${VCPKG_WINDOWS}/include")
 link_directories("${VCPKG_WINDOWS}/lib")
 #
 set(MPIR_LIB_PATH "${VCPKG_WINDOWS}/lib")
-target_link_libraries(app_demo PRIVATE "${MPIR_LIB_PATH}/mpir.lib" "${MPIR_LIB_PATH}/mpirxx.lib")
+target_link_libraries(app_demo PRIVATE "${MPIR_LIB_PATH}/mpir.lib") # "${MPIR_LIB_PATH}/mpirxx.lib"
 endif()
 
 
@@ -98,10 +98,12 @@ include(Catch)
 add_executable(my_test tests/depbox_gmp.test.cpp)
 #find_package(Catch2 CONFIG REQUIRED)
 
+target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)
+
 if(UNIX)
-target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain gmp::gmp gmp::gmpxx)
+target_link_libraries(my_test PRIVATE gmp::gmp gmp::gmpxx)
 else() # WINDOWS?
-target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain mpir)
+target_link_libraries(my_test PRIVATE mpir)
 endif()
 
 
