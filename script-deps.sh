@@ -30,3 +30,10 @@ $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR search mpir
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR integrate install
 
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR install --triplet=$VCPKG_TRIPLET
+
+cmake -B build -S .
+
+cmake --build build --config Release
+
+./build/my_test
+

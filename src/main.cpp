@@ -11,5 +11,7 @@
 
 int main() {
   //
-  return basic_testing();
+  int x = basic_testing();
+  // std::cout << "finished successfully!" << std::endl;
+  return x;
 }
