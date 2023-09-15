@@ -65,8 +65,10 @@ apt-get install ninja-build
 
 ### General build dependencies on Linux
 
+vcpkg requires some packages, such as pkg-config and autoconf:
+
 ```
-apt-get install autoconf automake libtool
+apt-get install autoconf automake libtool pkg-config
 ```
 
 ## Using CMakePresets for IDE
