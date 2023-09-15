@@ -58,7 +58,7 @@ set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 # message(STATUS "MAIN GMP FOUND!" ${GMP_FOUND})
 #
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/cmake/modules") # ???
-set(VCPKG_WINDOWS "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static")
+set(VCPKG_WINDOWS "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-windows-static")
 include_directories("${VCPKG_WINDOWS}/include")
 link_directories("${VCPKG_WINDOWS}/lib")
 #
