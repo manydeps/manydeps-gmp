@@ -21,7 +21,9 @@ echo "VCPKG_DIR=$VCPKG_DIR"
 mkdir -p tools
 git submodule add https://github.com/microsoft/vcpkg $VCPKG_DIR
 
-(cd $VCPKG_DIR && git checkout master && git pull)
+# DO NOT DO THIS! BECAUSE vcpkg IS SO INSTABLE... IT MAY BREAK EVERY WEEK!
+#
+# (cd $VCPKG_DIR && git checkout master && git pull)
 $VCPKG_DIR/$VCPKG_BOOTSTRAP
 
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR search gmp

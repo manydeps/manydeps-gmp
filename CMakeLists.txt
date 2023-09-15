@@ -30,7 +30,7 @@ target_link_libraries(app_demo PRIVATE depbox-gmp-lib) #external_folder)
 #target_include_directories(external_folder INTERFACE external/)
 
 if(UNIX)
-set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-linux")
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-linux")
 else() # WINDOWS?
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static")
 set(GMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows-static/include")

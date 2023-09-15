@@ -5,8 +5,6 @@
             "name": "windows-base",
             "hidden": true,
             "generator": "Ninja",
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
-            "installDir": "${sourceDir}/out/install/${presetName}",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe"
@@ -21,6 +19,8 @@
             "name": "win-x64-debug",
             "displayName": "x64 Debug",
             "inherits": "windows-base",
+            "binaryDir": "${sourceDir}/build/debug",
+            "installDir": "${sourceDir}/build/debub/install",
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
@@ -34,6 +34,8 @@
             "name": "win-x64-release",
             "displayName": "x64 Release",
             "inherits": "win-x64-debug",
+            "binaryDir": "${sourceDir}/build",
+            "installDir": "${sourceDir}/build/install",
             "toolchainFile": "${sourceDir}/tools/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
