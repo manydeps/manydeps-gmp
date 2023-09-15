@@ -20,7 +20,7 @@
             "displayName": "x64 Debug",
             "inherits": "windows-base",
             "binaryDir": "${sourceDir}/build/debug",
-            "installDir": "${sourceDir}/build/debub/install",
+            "installDir": "${sourceDir}/build/debug/install",
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
