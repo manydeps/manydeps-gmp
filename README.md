@@ -135,6 +135,10 @@ For Linux they exist on `build/vcpkg_installed/x64-linux/lib/pkgconfig/` folder.
 
 If you find a better solution, please Let Us Know!
 
+### Testing with GitHub Actions
+
+Ongoing work...
+
 ## License
 
 MIT License + LGPL License if using gmp or mpir
