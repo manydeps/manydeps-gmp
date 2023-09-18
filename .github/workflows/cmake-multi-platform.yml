@@ -46,6 +46,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: recursive
     - uses: ilammy/msvc-dev-cmd@v1
     - name: Get python dependencies
       shell: bash
