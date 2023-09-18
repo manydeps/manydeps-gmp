@@ -59,9 +59,9 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
         if [ "$RUNNER_OS" == "Windows" ]; then
-          .\script_deps.bat
+          .\script-deps.bat
         else
-          ./script_deps.sh
+          ./script-deps.sh
         fi
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
