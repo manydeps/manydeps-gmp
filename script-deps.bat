@@ -5,6 +5,8 @@
 echo "ON WINDOWS (Visual Studio), USE: Developer Command Prompt"
 echo "REMEMBER TO RUN: .\tools\vcpkg\bootstrap-vcpkg.bat"
 
+call .\tools\vcpkg\bootstrap-vcpkg.bat
+
 :: vcpkg.exe integrate install
 .\tools\vcpkg\vcpkg.exe --vcpkg-root .\tools\vcpkg integrate install
 
