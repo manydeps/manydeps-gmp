@@ -51,6 +51,8 @@ jobs:
             c_compiler: clang
           - os: ubuntu-latest
             c_compiler: cl
+          - os: ubuntu-latest
+            shell_type: cmd
 
     steps:
     - uses: actions/checkout@v3
