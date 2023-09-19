@@ -13,9 +13,15 @@ call .\tools\vcpkg\bootstrap-vcpkg.bat
 :: vcpkg.exe install --triplet=x64-windows-static
 .\tools\vcpkg\vcpkg.exe --vcpkg-root .\tools\vcpkg install --triplet=x64-windows-static
 
+echo "INVOKING cmake FOR win-x64-release"
+
 :: cmake -B build -S .
 cmake -B build -S . --preset=win-x64-release
 
+echo "BUILDING WITH cmake"
+
 cmake --build build --config Release
+
+echo "RUNNING my_test"
 
 .\build\Release\my_test.exe
