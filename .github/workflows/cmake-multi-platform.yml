@@ -76,23 +76,20 @@ jobs:
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
-    - name: Configure CMake (BASH)
+    - name: Configure VCPKG Dependencies (BASH)
       if: contains(matrix.shell_type, 'bash')
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
+        echo "RUNNING SCRIPT .\script-deps.sh"
         ./script-deps.sh
-        cmake -B ${{ steps.strings.outputs.build-output-dir }} -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -S ${{ github.workspace }}
       shell: bash
 
-    - name: Configure CMake (CMD)
+    - name: Configure VCPKG Dependencies (CMD)
       if: contains(matrix.shell_type, 'cmd')
       run: |
-        echo "RUNNING BOOTSTRAP (implicit on script-deps)"
-        echo "RUNNING SCRIPT"
+        echo "RUNNING SCRIPT .\script-deps.bat"
         .\script-deps.bat
-        echo "RUNNING CMAKE BUILD"
-        cmake -B ${{ steps.strings.outputs.build-output-dir }} -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -S ${{ github.workspace }}
       shell: cmd
 
     - name: Build
