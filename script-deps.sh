@@ -7,12 +7,13 @@ conan profile detect
 
 VCPKG_DIR=./tools/vcpkg
 VCPKG_TRIPLET=x64-windows-static
-VCPKG_BOOTSTRAP=bootstrap-vcpkg.bat
+VCPKG_BOOTSTRAP=bootstrap-vcpkg.sh
+# VCPKG_BOOTSTRAP=bootstrap-vcpkg.bat # NEVER RUN .bat here on .sh environment!
 
 COUNT_LINUX=`conan profile show | grep Linux | wc -l`
 if [[ "$COUNT_LINUX" -ne 0 ]]; then
     VCPKG_TRIPLET=x64-linux
-    VCPKG_BOOTSTRAP=bootstrap-vcpkg.sh
+    # VCPKG_BOOTSTRAP=bootstrap-vcpkg.sh
 fi
 
 echo "VCPKG_TRIPLET=$VCPKG_TRIPLET"
