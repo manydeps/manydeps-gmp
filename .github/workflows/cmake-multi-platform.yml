@@ -26,16 +26,24 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         build_type: [Release]
         c_compiler: [gcc, clang, cl]
+        shell_type: [cmd, bash]
         include:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
+            shell_type: cmd
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+            shell_type: bash
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
+            shell_type: bash
           - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
+            shell_type: bash
         exclude:
           - os: windows-latest
             c_compiler: gcc
@@ -63,7 +71,7 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Configure CMake (BASH)
-      if: contains(matrix.os, 'ubuntu')
+      if: contains(matrix.shell_type, 'bash')
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
@@ -72,7 +80,7 @@ jobs:
       shell: bash
 
     - name: Configure CMake (CMD)
-      if: contains(matrix.os, 'windows')
+      if: contains(matrix.shell_type, 'cmd')
       run: |
         echo "RUNNING BOOTSTRAP (implicit on script-deps)"
         echo "RUNNING SCRIPT"
