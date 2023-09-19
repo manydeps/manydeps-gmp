@@ -62,13 +62,13 @@ jobs:
         git submodule update --init --recursive
         git pull --recurse-submodules
     - name: Get python dependencies
-      if: contains(matrix.os, 'ubuntu')
-      run: |
-        apt-get install ninja-build -y
-    - name: Install ninja-build (Ubuntu)
       shell: bash
       run: |
         python3 -m pip install conan
+    - name: Install ninja-build (Ubuntu)
+      if: contains(matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get install ninja-build -y
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
       id: strings
