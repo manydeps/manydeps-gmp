@@ -13,7 +13,8 @@ call .\tools\vcpkg\bootstrap-vcpkg.bat
 :: vcpkg.exe install --triplet=x64-windows-static
 .\tools\vcpkg\vcpkg.exe --vcpkg-root .\tools\vcpkg install --triplet=x64-windows-static
 
-cmake -B build -S .
+:: cmake -B build -S .
+cmake -B build -S . --preset=win-x64-release
 
 cmake --build build --config Release
 
