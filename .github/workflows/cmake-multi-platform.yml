@@ -46,9 +46,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        submodules: recursive
     - uses: ilammy/msvc-dev-cmd@v1
+    - name: Git Submodules
+      run: |
+        git submodule update --init --recursive
+        git pull --recurse-submodules
     - name: Get python dependencies
       shell: bash
       run: |
