@@ -28,4 +28,4 @@ dir build
 
 echo "RUNNING my_test"
 
-.\build\Release\my_test.exe
+.\build\my_test.exe
