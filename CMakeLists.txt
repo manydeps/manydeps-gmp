@@ -34,7 +34,7 @@ set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-linux")
 else() # WINDOWS?
 set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-windows")
 set(GMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-windows/include")
-set(GMP_LIBRARIES "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-windows/lib") 
+set(GMP_LIBRARIES "${CMAKE_SOURCE_DIR}/build/vcpkg_installed/x64-windows/lib/mpir.lib") 
 endif()
 
 # PkgConfig from vcpkg only working on Linux!
