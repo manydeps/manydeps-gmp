@@ -62,6 +62,10 @@ jobs:
         git submodule update --init --recursive
         git pull --recurse-submodules
     - name: Get python dependencies
+      if: contains(matrix.os, 'ubuntu')
+      run: |
+        apt-get install ninja-build -y
+    - name: Install ninja-build (Ubuntu)
       shell: bash
       run: |
         python3 -m pip install conan
