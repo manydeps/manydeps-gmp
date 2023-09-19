@@ -72,8 +72,7 @@ jobs:
     - name: Configure CMake (CMD)
       if: contains(matrix.os, 'windows')
       run: |
-        echo "RUNNING BOOTSTRAP"
-        .\tools\vcpkg\bootstrap-vcpkg.bat
+        echo "RUNNING BOOTSTRAP (implicit on script-deps)"
         echo "RUNNING SCRIPT"
         .\script-deps.bat
         echo "RUNNING CMAKE BUILD"
