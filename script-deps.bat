@@ -22,6 +22,10 @@ echo "BUILDING WITH cmake"
 
 cmake --build build --config Release
 
+echo "LISTING files in build/ folder"
+
+dir build
+
 echo "RUNNING my_test"
 
 .\build\Release\my_test.exe
