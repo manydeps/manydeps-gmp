@@ -1,6 +1,6 @@
 # manydeps-gmp
 
-[![VCPKG with CMake on Windows/Linux](https://github.com/manydeps/manydeps-gmp/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/cmake-multi-platform.yml)
+[![CMake on Multiple Platforms](https://github.com/manydeps/manydeps-gmp/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/cmake-multi-platform.yml)
 
 This is a demonstration project from the [ManyDeps](https://github.com/manydeps),
 for the C/C++ GMP library using package managers (vcpkg and conan) on windows/linux.
