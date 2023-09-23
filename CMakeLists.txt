@@ -20,11 +20,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # ===================
 # header only library
 # -------------------
-add_library(depbox-gmp-lib INTERFACE)
-target_include_directories(depbox-gmp-lib INTERFACE include/)
+add_library(manydeps-gmp-lib INTERFACE)
+target_include_directories(manydeps-gmp-lib INTERFACE include/)
 
 add_executable(app_demo src/main.cpp)
-target_link_libraries(app_demo PRIVATE depbox-gmp-lib) #external_folder)
+target_link_libraries(app_demo PRIVATE manydeps-gmp-lib) 
 
 #add_library(external_folder INTERFACE)
 #target_include_directories(external_folder INTERFACE external/)
@@ -95,7 +95,7 @@ include(Catch)
 
 
 # this is heuristically generated, and may not be correct
-add_executable(my_test tests/depbox_gmp.test.cpp)
+add_executable(my_test tests/manydeps_gmp.test.cpp)
 #find_package(Catch2 CONFIG REQUIRED)
 
 target_link_libraries(my_test PRIVATE Catch2::Catch2 Catch2::Catch2WithMain)

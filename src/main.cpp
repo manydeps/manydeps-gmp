@@ -5,13 +5,16 @@
 #include <stdio.h>
 
 // C++
+#include <iostream>
 #include <vector>
 // local library
-#include <depbox-gmp-lib/Testing.hpp>
+#include <manydeps-gmp-lib/Testing.hpp>
+//
+#include <gmp.h>
 
 int main() {
   //
   int x = basic_testing();
-  // std::cout << "finished successfully!" << std::endl;
+  std::cout << "finished successfully!" << std::endl;
   return x;
 }

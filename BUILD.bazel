@@ -1,0 +1,17 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+
+cc_binary(
+    name = "app_demo",
+    srcs = glob([
+        "src/**/*.h", 
+        "src/**/*.cpp"
+    ]),
+    deps = ["//include:manydeps-gmp-lib", "@vcpkg-build//:gmp-lib"]
+)

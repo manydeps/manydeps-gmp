@@ -1,0 +1,14 @@
+# COPY THIS FILE INTO build/vcpkg_installed/ARCH
+# EXAMPLE: cp BUILD-GMP.bzl build/vcpkg_installed/x64-linux/BUILD.bazel
+#
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "gmp-lib",
+    includes = ["include"],
+    deps = ["//include:gmp-lib-hpp", "//lib:gmp-lib-a"]
+)

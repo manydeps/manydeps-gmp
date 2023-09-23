@@ -370,4 +370,4 @@ CMakeUserPresets.json
 vcpkg_installed/
 #
 external/
-
+bazel-*
