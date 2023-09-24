@@ -2,6 +2,8 @@
 
 [![CMake on Multiple Platforms](https://github.com/manydeps/manydeps-gmp/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/cmake-multi-platform.yml)
 
+[![Bazel on multiple platforms](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-multi-platform.yml)
+
 This is a demonstration project from the [ManyDeps](https://github.com/manydeps),
 for the C/C++ GMP library using package managers (vcpkg and conan) on windows/linux.
 
@@ -146,9 +148,9 @@ vcpkg install
 bazel run @hedron_compile_commands//:refresh_all
 # will generate local compile_commands.json
 
-bazel build ...
+bazel build ... --config linux
 
-bazel test ...
+bazel test ... --config windows
 ```
 
 ## Testing with GitHub Actions
