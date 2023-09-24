@@ -61,13 +61,15 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends clang-tidy clang-format clangd
 
-# bazel
-RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+# install nvm (for npm)
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+RUN bash /root/.nvm/install.sh
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-     && apt-get -y install --no-install-recommends nodejs 
+# install npm (using nvm)
+RUN bash -i -c "nvm install --lts"
 
-RUN npm install -g @bazel/bazelisk
+# bazel (using npm)
+RUN bash -i -c "npm install -g @bazel/bazelisk"
 
 # install pip and cpplint
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -81,7 +83,7 @@ RUN python3 -m pip install bumpver
 # install CLN
 #RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends libcln-dev
-     
+
 RUN python3 -m pip install conan
 
 RUN conan profile detect
