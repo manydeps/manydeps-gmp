@@ -7,5 +7,6 @@ package(
 cc_test(
     name = "my_test",
     srcs = ["manydeps_gmp.test.cpp"],  
-    deps = ["@catch2//:catch2_main", "//:gmp-all"], 
+    #deps = ["@catch2//:catch2_main", "//:gmp-all"], 
+    deps = ["@catch2//:catch2_main", "@gmp//:gmp-all"]
 )

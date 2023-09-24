@@ -6,9 +6,10 @@ local_repository(
     path = ".",
 )
 
-local_repository(
-    name = "tools",
-    path = "./tools",
+new_local_repository(
+    name = "gmp",
+    path = "./tools/vcpkg/packages",
+    build_file = "gmp.BUILD",
 )
 
 http_archive(

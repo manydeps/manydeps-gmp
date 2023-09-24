@@ -40,6 +40,6 @@ $VCPKG_DIR/$VCPKG_BOOTSTRAP
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR search gmp
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR search mpir
 
-$VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR integrate install $USE_UNSUPPORTED
+$VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR $USE_UNSUPPORTED integrate install 
 
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR install --triplet=$VCPKG_TRIPLET 
