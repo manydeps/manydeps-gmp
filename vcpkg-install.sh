@@ -11,8 +11,6 @@ VCPKG_BOOTSTRAP=bootstrap-vcpkg.sh
 USE_PRESET=win-x64-release
 # VCPKG_BOOTSTRAP=bootstrap-vcpkg.bat # NEVER RUN .bat here on .sh environment!
 
-USE_UNSUPPORTED=""
-
 COUNT_LINUX=`conan profile show | grep Linux | wc -l`
 if [[ "$COUNT_LINUX" -ne 0 ]]; then
     VCPKG_TRIPLET=x64-linux
@@ -22,9 +20,9 @@ fi
 
 COUNT_MACOS=`conan profile show | grep Macos | wc -l`
 if [[ "$COUNT_MACOS" -ne 0 ]]; then
-    USE_UNSUPPORTED=--allow-unsupported
+    VCPKG_TRIPLET=x64-osx
+    USE_PRESET=macos-debug
 fi
-
 
 echo "VCPKG_TRIPLET=$VCPKG_TRIPLET"
 echo "VCPKG_DIR=$VCPKG_DIR"
@@ -40,6 +38,6 @@ $VCPKG_DIR/$VCPKG_BOOTSTRAP
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR search gmp
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR search mpir
 
-$VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR $USE_UNSUPPORTED integrate install 
+$VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR integrate install 
 
 $VCPKG_DIR/vcpkg --vcpkg-root $VCPKG_DIR install --triplet=$VCPKG_TRIPLET 

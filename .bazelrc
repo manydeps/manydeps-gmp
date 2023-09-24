@@ -6,3 +6,7 @@ build --cxxopt='-std=c++17'
 build --cxxopt='-g'
 
 #build --client_env=CC=clang
+
+# Platform-specific settings
+build:windows --cxxopt=/std:c++17
+build:unix --cxxopt=-std=c++17
