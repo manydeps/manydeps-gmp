@@ -87,9 +87,22 @@ jobs:
       run: |
         echo "RUNNING SCRIPT ./vcpkg-install.sh"
         ./vcpkg-install.sh
+        echo "DISPLAY ERROR, IF OSX"
+        cat /Users/runner/work/manydeps-gmp/manydeps-gmp/tools/vcpkg/buildtrees/gmp/autoconf-x64-osx-err.log
       shell: bash
 
-    - name: Build
+    - name: Check Lib (WINDOWS)
+      if: contains(matrix.os, 'windows')
+      run: |
+        ls tools/vcpkg/packages/mpir_x64-windows-static/lib/*
+        lib /list tools/vcpkg/packages/mpir_x64-windows-static/lib/mpir.lib
+
+    - name: Build (WINDOWS)
+      if: contains(matrix.os, 'windows')
+      run: bazel build ... --config windows
+
+    - name: Build (LINUX)
+      if: contains(matrix.os, 'ubuntu')
       run: bazel build ...
 
     - name: Test
