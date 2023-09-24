@@ -76,7 +76,7 @@ jobs:
       run: |
         brew install bazelisk
     - name: Get bazel (LINUX)
-      if: contains(matrix.os, 'macos')
+      if: contains(matrix.os, 'ubuntu')
       shell: bash
       run: |
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
