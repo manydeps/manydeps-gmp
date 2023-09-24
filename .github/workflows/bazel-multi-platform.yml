@@ -87,9 +87,14 @@ jobs:
       run: |
         echo "RUNNING SCRIPT ./vcpkg-install.sh"
         ./vcpkg-install.sh
-        echo "DISPLAY ERROR, IF OSX"
-        cat /Users/runner/work/manydeps-gmp/manydeps-gmp/tools/vcpkg/buildtrees/gmp/autoconf-x64-osx-err.log
       shell: bash
+
+    - name: Check Lib (MACOS)
+      if: contains(matrix.os, 'macos')
+      run: |
+        echo "DISPLAY ERROR, IF OSX"
+        cat tools/vcpkg/buildtrees/gmp/autoconf-x64-osx-err.log
+
 
     - name: Check Lib (WINDOWS)
       if: contains(matrix.os, 'windows')
