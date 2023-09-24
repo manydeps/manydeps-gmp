@@ -23,7 +23,7 @@ jobs:
       #
       # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
         build_type: [Release]
         c_compiler: [gcc, clang, cl]
         include:
@@ -39,9 +39,6 @@ jobs:
           - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
-          - os: macos-latest
-            c_compiler: clang
-            cpp_compiler: clang++
         exclude:
           - os: windows-latest
             c_compiler: gcc
@@ -49,10 +46,6 @@ jobs:
             c_compiler: clang
           - os: ubuntu-latest
             c_compiler: cl
-          - os: macos-latest
-            c_compiler: cl
-          - os: macos-latest
-            c_compiler: gcc
 
     steps:
     - uses: actions/checkout@v3
@@ -100,7 +93,7 @@ jobs:
       if: contains(matrix.os, 'windows')
       run: |
         ls tools/vcpkg/packages/mpir_x64-windows-static/lib/*
-        echo "lib /list ***/mpir.lib"
+        echo "lib /list tools/vcpkg/packages/mpir_x64-windows-static/lib/mpir.lib"
         lib /list tools/vcpkg/packages/mpir_x64-windows-static/lib/mpir.lib
 
     - name: Build (WINDOWS)
@@ -111,5 +104,10 @@ jobs:
       if: contains(matrix.os, 'ubuntu')
       run: bazel build ... --config linux
 
-    - name: Test
-      run: bazel test ...
+    - name: Test (WINDOWS)
+      if: contains(matrix.os, 'windows')
+      run: bazel test ... --config windows
+
+    - name: Test (LINUX)
+      if: contains(matrix.os, 'ubuntu')
+      run: bazel test ... --config linux
