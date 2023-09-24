@@ -80,7 +80,6 @@ jobs:
       shell: bash
       run: |
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-        bash /root/.nvm/install.sh
         bash -i -c "nvm install --lts"
         bash -i -c "npm install -g @bazel/bazelisk"
 

@@ -63,7 +63,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 # install nvm (for npm)
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-RUN bash /root/.nvm/install.sh
+# RUN sudo bash /root/.nvm/install.sh
 
 # install npm (using nvm)
 RUN bash -i -c "nvm install --lts"
