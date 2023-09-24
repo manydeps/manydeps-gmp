@@ -100,6 +100,7 @@ jobs:
       if: contains(matrix.os, 'windows')
       run: |
         ls tools/vcpkg/packages/mpir_x64-windows-static/lib/*
+        echo "lib /list ***/mpir.lib"
         lib /list tools/vcpkg/packages/mpir_x64-windows-static/lib/mpir.lib
 
     - name: Build (WINDOWS)
@@ -108,7 +109,7 @@ jobs:
 
     - name: Build (LINUX)
       if: contains(matrix.os, 'ubuntu')
-      run: bazel build ...
+      run: bazel build ... --config linux
 
     - name: Test
       run: bazel test ...
