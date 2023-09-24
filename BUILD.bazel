@@ -1,10 +1,40 @@
-load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 package(
     default_visibility = ["//visibility:public"],
 )
 
-load("@rules_cc//cc:defs.bzl", "cc_library")
+sh_binary(
+    name = "vcpkg-install",
+    srcs = ["vcpkg-install.sh"],
+)
+
+# thirdparty vcpkg-installed GMP library
+cc_library(
+    name = "gmp-all",
+    #srcs = glob(
+    #    ["vcpkg_installed/x64-linux/lib/**/*.a"],
+    #    ["vcpkg_installed/x64-linux/lib/**/*.lib"]
+    #),
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": glob(["vcpkg_installed/x64-windows/lib/**/*.lib"]),
+        "@bazel_tools//src/conditions:darwin": glob(["vcpkg_installed/macos/lib/**/*.a"]),
+        "//conditions:default": glob(["vcpkg_installed/x64-linux/lib/**/*.a"]),
+    }),
+    #hdrs = glob(["vcpkg_installed/x64-linux/include/**/*.h"]),
+    hdrs = select({
+        "@bazel_tools//src/conditions:windows": glob(["vcpkg_installed/x64-windows/include/**/*.h"]),
+        "@bazel_tools//src/conditions:darwin": glob(["vcpkg_installed/x64-ma/include/**/*.h"]),
+        "//conditions:default": glob(["vcpkg_installed/x64-linux/include/**/*.h"]),
+    }),
+    #includes = ["vcpkg_installed/x64-linux/include/"],
+    includes = select({
+        "@bazel_tools//src/conditions:windows": ["vcpkg_installed/x64-windows/include/"],
+        "@bazel_tools//src/conditions:darwin": ["vcpkg_installed/macos/include/"],
+        "//conditions:default": ["vcpkg_installed/x64-linux/include/"],
+    }),
+    visibility = ["//visibility:public"],
+)
 
 
 cc_binary(
@@ -13,5 +43,5 @@ cc_binary(
         "src/**/*.h", 
         "src/**/*.cpp"
     ]),
-    deps = ["//include:manydeps-gmp-lib", "@vcpkg-build//:gmp-lib"]
+    deps = ["//include:manydeps-gmp-lib", ":gmp-all"]
 )

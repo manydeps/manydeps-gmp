@@ -137,7 +137,21 @@ For Linux they exist on `build/vcpkg_installed/x64-linux/lib/pkgconfig/` folder.
 
 If you find a better solution, please Let Us Know!
 
-### Testing with GitHub Actions
+## Testing with Bazel
+
+```
+vcpkg install
+# will generate local folder vcpkg_installed
+
+bazel run @hedron_compile_commands//:refresh_all
+# will generate local compile_commands.json
+
+bazel build ...
+
+bazel test ...
+```
+
+## Testing with GitHub Actions
 
 Ongoing work...
 

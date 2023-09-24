@@ -11,5 +11,5 @@ cc_library(
         "**/*.h",
     ]),
     include_prefix = "manydeps-gmp-lib/",
-    deps = ["@vcpkg-build//:gmp-lib"],
+    deps = ["//:gmp-all"],
 )

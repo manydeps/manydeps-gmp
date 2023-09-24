@@ -6,5 +6,5 @@ package(
 
 cc_library(
     name = "manydeps-gmp-lib",
-    deps = ["//include/manydeps-gmp-lib:all_hpp", "@vcpkg-build//:gmp-lib"],
+    deps = ["//include/manydeps-gmp-lib:all_hpp"],
 )

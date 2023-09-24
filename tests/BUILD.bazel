@@ -1,0 +1,11 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "manydeps_gmp.test",
+    srcs = ["manydeps_gmp.test.cpp"],  
+    deps = ["@catch2//:catch2_main", "//:gmp-all"], 
+)
