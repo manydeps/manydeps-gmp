@@ -6,7 +6,7 @@ package(
 
 # thirdparty vcpkg-installed GMP library
 cc_library(
-    name = "gmp-all",
+    name = "lib",
     #srcs = glob(
     #    ["vcpkg_installed/x64-linux/lib/**/*.a"],
     #    ["vcpkg_installed/x64-linux/lib/**/*.lib"]
