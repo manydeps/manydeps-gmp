@@ -17,19 +17,19 @@ cc_library(
     #    ["vcpkg_installed/x64-linux/lib/**/*.lib"]
     #),
     srcs = select({
-        "@bazel_tools//src/conditions:windows": glob(["vcpkg_installed/x64-windows/lib/**/*.lib"]),
+        "@bazel_tools//src/conditions:windows": glob(["tools/vcpkg/packages/mpir_x64-windows-static/lib/**/*.lib"]),
         "@bazel_tools//src/conditions:darwin": glob(["vcpkg_installed/macos/lib/**/*.a"]),
         "//conditions:default": glob(["vcpkg_installed/x64-linux/lib/**/*.a"]),
     }),
     #hdrs = glob(["vcpkg_installed/x64-linux/include/**/*.h"]),
     hdrs = select({
-        "@bazel_tools//src/conditions:windows": glob(["vcpkg_installed/x64-windows/include/**/*.h"]),
+        "@bazel_tools//src/conditions:windows": glob(["tools/vcpkg/packages/mpir_x64-windows-static/include/**/*.h"]),
         "@bazel_tools//src/conditions:darwin": glob(["vcpkg_installed/x64-ma/include/**/*.h"]),
         "//conditions:default": glob(["vcpkg_installed/x64-linux/include/**/*.h"]),
     }),
     #includes = ["vcpkg_installed/x64-linux/include/"],
     includes = select({
-        "@bazel_tools//src/conditions:windows": ["vcpkg_installed/x64-windows/include/"],
+        "@bazel_tools//src/conditions:windows": ["tools/vcpkg/packages/mpir_x64-windows-static/include/"],
         "@bazel_tools//src/conditions:darwin": ["vcpkg_installed/macos/include/"],
         "//conditions:default": ["vcpkg_installed/x64-linux/include/"],
     }),
