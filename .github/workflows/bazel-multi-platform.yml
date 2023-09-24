@@ -81,7 +81,7 @@ jobs:
       run: |
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
         bash -i -c "nvm install --lts"
-        bash -i -c "npm install -g @bazel/bazelisk"
+        bash -i -c "sudo npm install -g @bazel/bazelisk"
 
     - name: Configure VCPKG Dependencies (BASH)
       run: |
