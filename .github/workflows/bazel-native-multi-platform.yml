@@ -81,9 +81,15 @@ jobs:
         cd .\thirdparty\mpir\msvc\vs22\
         echo "building generic version"
         cmd /c msbuild.bat gc LIB x64 Release
+        echo "FINISHED build in CMD!"
+      shell: cmd
+
+    - name: GMP Check Native Library (CMD)
+      if: contains(matrix.os, 'windows')
+      run: |
         echo "CHECKING lib type (EXPECTED LIBCMT or /MT)"
-        echo "ls thirdparty/mpir"
-        ls thirdparty/mpir
+        echo "ls thirdparty\mpir"
+        ls thirdparty\mpir
         echo "lib /list thirdparty\mpir\lib\x64\Release\mpir.lib"
         lib /list thirdparty\mpir\lib\x64\Release\mpir.lib
         echo "dumpbin /directives thirdparty\mpir\lib\x64\Release\mpir.lib"
