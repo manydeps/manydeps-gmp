@@ -118,11 +118,11 @@ jobs:
 
     - name: Build (LINUX)
       if: contains(matrix.os, 'ubuntu')
-      run: bazel build ... --config linux
+      run: bazel build ... --config linux_${{ matrix.c_compiler }}
 
     - name: Build (OSX-MACOS)
       if: contains(matrix.os, 'macos')
-      run: bazel build ... --config linux
+      run: bazel build ... --config linux_${{ matrix.c_compiler }}
 
     - name: Test (WINDOWS)
       if: contains(matrix.os, 'windows')
@@ -130,8 +130,8 @@ jobs:
 
     - name: Test (LINUX)
       if: contains(matrix.os, 'ubuntu')
-      run: bazel test ... --config linux
+      run: bazel test ... --config linux_${{ matrix.c_compiler }}
 
     - name: Test (OSX-Macos)
       if: contains(matrix.os, 'macos')
-      run: bazel test ... --config linux
+      run: bazel test ... --config linux_${{ matrix.c_compiler }}
