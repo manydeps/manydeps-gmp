@@ -20,19 +20,19 @@ cc_library(
     # thirdparty\mpir\msvc\vs22\lib_mpir_cxx\x64\Release\mpirxx.lib
     srcs = select({
         "@bazel_tools//src/conditions:windows": glob(["mpir/lib/**/mpir.lib", "mpir/lib/**/mpirxx.lib"]),
-        "@bazel_tools//src/conditions:darwin": glob(["gmp_x64-osx/lib/**/*.a"]),
+        "@bazel_tools//src/conditions:darwin": glob(["gmp/.libs/**/libgmp.dylib", "gmp/.libs/**/libgmpxx.dylib"]),
         "//conditions:default": glob(["gmp/.libs/**/libgmp.a", "gmp/.libs/**/libgmpxx.a"]),
     }),
     #hdrs = glob(["vcpkg_installed/x64-linux/include/**/*.h"]),
     hdrs = select({
         "@bazel_tools//src/conditions:windows": glob(["mpir/lib/x64/Release/gmp.h", "mpir/lib/x64/Release/gmpxx.h"]),
-        "@bazel_tools//src/conditions:darwin": glob(["gmp_x64-osx/include/**/*.h"]),
+        "@bazel_tools//src/conditions:darwin": glob(["gmp/gmp.h", "gmp/gmpxx.h"]),
         "//conditions:default": glob(["gmp/gmp.h", "gmp/gmpxx.h"]),
     }),
     #includes = ["vcpkg_installed/x64-linux/include/"],
     includes = select({
         "@bazel_tools//src/conditions:windows": ["mpir/lib/x64/Release/"],
-        "@bazel_tools//src/conditions:darwin": ["gmp_x64-osx/include/"],
+        "@bazel_tools//src/conditions:darwin": ["gmp"],
         "//conditions:default": ["gmp"],
     }),
     visibility = ["//visibility:public"],
