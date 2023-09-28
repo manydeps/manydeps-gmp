@@ -9,6 +9,8 @@
 This is a demonstration project from the [ManyDeps](https://github.com/manydeps),
 for the C/C++ GMP library using package managers (vcpkg and conan) on windows/linux.
 
+***If you want to learn more about this repo, please read the Medium text [Building Cross-platform C++ GMP library with VCPKG, CMake and Bazel: Lessons Learned](https://igormcoelho.medium.com/building-cross-platform-c-gmp-library-with-vcpkg-cmake-and-bazel-lessons-learned-ea2cba4b697d).***
+
 This works fine on Windows Visual Studio 2022 and also Linux (including Windows WSL).
 For Linux, the classic `gmp` library is used, but for Windows, the alternative `mpir`
 is used (since `gmp` currently fails to build on Windows in this repo).
