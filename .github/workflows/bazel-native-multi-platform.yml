@@ -84,8 +84,10 @@ jobs:
         echo "CHECKING lib type (EXPECTED LIBCMT or /MT)"
         echo "ls thirdparty/mpir"
         ls thirdparty/mpir
-        echo "lib /list thirdparty\mpir\lib\x64\Release/mpir.lib"
-        lib /list thirdparty/mpir\lib\x64\Release/mpir.lib
+        echo "lib /list thirdparty\mpir\lib\x64\Release\mpir.lib"
+        lib /list thirdparty\mpir\lib\x64\Release\mpir.lib
+        echo "dumpbin /directives thirdparty\mpir\lib\x64\Release\mpir.lib"
+        dumpbin /directives thirdparty\mpir\lib\x64\Release\mpir.lib
         echo "FINISHED build in CMD!"
       shell: cmd
 
