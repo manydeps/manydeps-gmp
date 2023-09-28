@@ -1,3 +1,6 @@
 [submodule "tools/vcpkg"]
 	path = tools/vcpkg
 	url = https://github.com/Microsoft/vcpkg.git
+[submodule "thirdparty/mpir"]
+	path = thirdparty/mpir
+	url = https://github.com/BrianGladman/mpir

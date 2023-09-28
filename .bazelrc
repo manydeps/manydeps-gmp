@@ -8,5 +8,5 @@
 #build --client_env=CC=clang
 
 # Platform-specific settings
-build:windows --cxxopt=/std:c++17
-build:linux --cxxopt=-std=c++17
+build:windows --cxxopt=/std:c++17 --cxxopt=/MT --features=fully_static_link
+build:linux   --cxxopt=-std=c++17              --features=fully_static_link
