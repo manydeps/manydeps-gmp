@@ -60,19 +60,19 @@ jobs:
         git submodule update --init --recursive
         git pull --recurse-submodules
 
-    - name: GMP Build Native (BASH)
+    - name: GMP Build Native (BASH-UBUNTU)
       if: contains(matrix.os, 'ubuntu')
       run: |
         echo "RUNNING SCRIPT ./gmp-install.sh"
         ./gmp-install.sh
       shell: bash
 
-    - name: GMP Build Native (ZSH)
+    - name: GMP Build Native (BASH-MACOS-OSX)
       if: contains(matrix.os, 'macos')
       run: |
         echo "RUNNING SCRIPT ./gmp-install.sh"
         ./gmp-install.sh
-      shell: zsh
+      shell: bash
 
     - name: GMP Build Native (CMD)
       if: contains(matrix.os, 'windows')
