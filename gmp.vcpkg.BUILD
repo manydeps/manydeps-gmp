@@ -15,7 +15,7 @@ cc_library(
     #    ["vcpkg_installed/x64-linux/lib/**/*.lib"]
     #),
     srcs = select({
-        "@bazel_tools//src/conditions:windows": glob(["mpir_x64-windows-static/lib/**/mpir.lib", "mpir_x64-windows/lib/**/mpir.lib"]),
+        "@bazel_tools//src/conditions:windows": glob(["mpir_x64-windows-static/lib/**/mpir.lib", "mpir_x64-windows/lib/**/mpirxx.lib"]),
         "@bazel_tools//src/conditions:darwin": glob(["gmp_x64-osx/lib/**/*.a"]),
         "//conditions:default": glob(["gmp_x64-linux/lib/**/*.a"]),
     }),
