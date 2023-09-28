@@ -69,17 +69,14 @@ jobs:
         cd .\thirdparty\mpir\msvc\vs22\
         echo "building generic version"
         cmd /c msbuild.bat gc LIB x64 Release
-        echo "FINISHED build in CMD!"
-      shell: cmd
-
-    - name: FIRST Check Lib (WINDOWS)
-      if: contains(matrix.os, 'windows')
-      run: |
+        echo "CHECKING lib type (EXPECTED LIBCMT or /MT)"
         echo "ls thirdparty/mpir"
         ls thirdparty/mpir
         echo "lib /list thirdparty\mpir\lib\x64\Release/mpir.lib"
         lib /list thirdparty/mpir\lib\x64\Release/mpir.lib
-        echo "Finished FIRST Check Lib"
+        echo "FINISHED build in CMD!"
+      shell: cmd
+
 
     - name: Get python dependencies
       shell: bash
@@ -102,13 +99,6 @@ jobs:
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
         bash -i -c "nvm install --lts"
         bash -i -c "sudo npm install -g @bazel/bazelisk"
-
-    - name: Check Lib (WINDOWS)
-      if: contains(matrix.os, 'windows')
-      run: |
-        ls tools/vcpkg/packages/mpir_x64-windows-static/lib/*
-        echo "lib /list tools/vcpkg/packages/mpir_x64-windows-static/lib/mpir.lib"
-        lib /list tools/vcpkg/packages/mpir_x64-windows-static/lib/mpir.lib
 
     - name: Build (WINDOWS)
       if: contains(matrix.os, 'windows')
