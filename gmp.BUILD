@@ -20,7 +20,7 @@ cc_library(
     # thirdparty\mpir\msvc\vs22\lib_mpir_cxx\x64\Release\mpirxx.lib
     srcs = select({
         "@bazel_tools//src/conditions:windows": glob(["mpir/lib/**/mpir.lib", "mpir/lib/**/mpirxx.lib"]),
-        "@bazel_tools//src/conditions:darwin": glob(["gmp/.libs/**/libgmp.a", "gmp/.libs/**/libgmpxx.a"]), #glob(["gmp/.libs/**/libgmp.dylib", "gmp/.libs/**/libgmpxx.dylib"]),
+        "@bazel_tools//src/conditions:darwin": glob(["gmp/.libs/**/libgmp*.a", "gmp/.libs/**/libgmp*.dylib"]),
         "//conditions:default": glob(["gmp/.libs/**/libgmp.a", "gmp/.libs/**/libgmpxx.a"]),
     }),
     #hdrs = glob(["vcpkg_installed/x64-linux/include/**/*.h"]),
