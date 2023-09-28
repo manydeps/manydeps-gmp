@@ -8,7 +8,7 @@
 #build --client_env=CC=clang
 
 # Platform-specific settings
-build:windows     --cxxopt=/std:c++17 --cxxopt=/MT          --features=fully_static_link
+build:windows     --cxxopt=/std:c++17 --cxxopt=/MT --linkopt=/NODEFAULTLIB:MSVCRT --features=fully_static_link
 build:linux       --cxxopt=-std=c++17                       --features=fully_static_link
 build:linux_gcc   --cxxopt=-std=c++17 --client_env=CC=gcc   --features=fully_static_link
 build:linux_clang --cxxopt=-std=c++17 --client_env=CC=clang --features=fully_static_link
