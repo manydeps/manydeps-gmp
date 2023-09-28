@@ -4,7 +4,7 @@
 
 [![Bazel VCPKG on windows and linux](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-vcpkg-win-linux.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-vcpkg-win-linux.yml)
 
-[![Bazel Native on Multiple Platforms](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-native-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-native-multi-platform.yml)
+[![Bazel GMP Native on Multiple Platforms](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-native-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-native-multi-platform.yml)
 
 This is a demonstration project from the [ManyDeps](https://github.com/manydeps),
 for the C/C++ GMP library using package managers (vcpkg and conan) on windows/linux.

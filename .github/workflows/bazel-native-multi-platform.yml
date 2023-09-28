@@ -1,6 +1,6 @@
 # This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
-name: Bazel on multiple platforms
+name: Bazel GMP Native on multiple platforms
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       #
       # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         build_type: [Release]
         c_compiler: [gcc, clang, cl]
         include:
@@ -39,12 +39,17 @@ jobs:
           - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
+          - os: macos-latest
+            c_compiler: clang
+            cpp_compiler: clang++
         exclude:
           - os: windows-latest
             c_compiler: gcc
           - os: windows-latest
             c_compiler: clang
           - os: ubuntu-latest
+            c_compiler: cl
+          - os: macos-latest
             c_compiler: cl
 
     steps:
@@ -61,6 +66,13 @@ jobs:
         echo "RUNNING SCRIPT ./gmp-install.sh"
         ./gmp-install.sh
       shell: bash
+
+    - name: GMP Build Native (ZSH)
+      if: contains(matrix.os, 'macos')
+      run: |
+        echo "RUNNING SCRIPT ./gmp-install.sh"
+        ./gmp-install.sh
+      shell: zsh
 
     - name: GMP Build Native (CMD)
       if: contains(matrix.os, 'windows')
@@ -108,10 +120,18 @@ jobs:
       if: contains(matrix.os, 'ubuntu')
       run: bazel build ... --config linux
 
+    - name: Build (OSX-MACOS)
+      if: contains(matrix.os, 'macos')
+      run: bazel build ... --config linux
+
     - name: Test (WINDOWS)
       if: contains(matrix.os, 'windows')
       run: bazel test ... --config windows
 
     - name: Test (LINUX)
       if: contains(matrix.os, 'ubuntu')
+      run: bazel test ... --config linux
+
+    - name: Test (OSX-Macos)
+      if: contains(matrix.os, 'macos')
       run: bazel test ... --config linux
