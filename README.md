@@ -157,6 +157,12 @@ bazel build ... --config linux
 bazel test ... --config windows
 ```
 
+Note some important flags on .bazelrc file.
+On windows, there are two types of dynamic library, so we assume here that GMP/MPIR is built with `/MT` flag, 
+meaning that we need to add `static_link_msvcrt` configuration on .bazelrc:
+
+- `build:windows     --cxxopt=/std:c++17 --cxxopt=/MT --linkopt=/NODEFAULTLIB:MSVCRT --features=static_link_msvcrt`
+
 ## Testing with GitHub Actions
 
 Ongoing work...
