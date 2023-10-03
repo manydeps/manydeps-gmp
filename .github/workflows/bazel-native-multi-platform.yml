@@ -123,7 +123,7 @@ jobs:
 
     - name: Build (WINDOWS)
       if: contains(matrix.os, 'windows')
-      run: bazel build ... --config windows
+      run: bazel build ... --config windows_mt
 
     - name: Build (LINUX)
       if: contains(matrix.os, 'ubuntu')
@@ -135,7 +135,7 @@ jobs:
 
     - name: Test (WINDOWS)
       if: contains(matrix.os, 'windows')
-      run: bazel test ... --config windows
+      run: bazel test ... --config windows_mt
 
     - name: Test (LINUX)
       if: contains(matrix.os, 'ubuntu')
