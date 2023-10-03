@@ -30,7 +30,7 @@ Please follow the next steps carefully.
 
 ### First step: get submodule dependencies
 
-vcpkg is installed as shown in [vcpkg.io](vcpkg.io website), as a git submodule.
+vcpkg is installed as shown in [vcpkg.io website](https://vcpkg.io), as a git submodule.
 
 To get submodules, please run the following commands:
 
