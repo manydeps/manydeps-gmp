@@ -8,6 +8,7 @@
 
 [![Bazel GMP Conan on Windows, Linux and OSX-MACOS](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-conan-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-conan-multi-platform.yml)
 
+![C++17](https://img.shields.io/badge/std-c%2B%2B17-blue)
 
 This is a demonstration project from the [ManyDeps](https://github.com/manydeps),
 for the C/C++ GMP library using package managers (vcpkg and conan) on windows/linux.
@@ -17,6 +18,8 @@ for the C/C++ GMP library using package managers (vcpkg and conan) on windows/li
 This works fine on Windows Visual Studio 2022 and also Linux (including Windows WSL).
 For Linux, the classic `gmp` library is used, but for Windows, the alternative `mpir`
 is used (since `gmp` currently fails to build on Windows in this repo).
+
+**Notes for Windows only:** Conan is much faster and requires /MD build (GMP works fine). VCPKG is much slower and requires /MT build (and only MPIR works).
 
 Basic setup in both platforms include: CMake and Ninja.
 Also it is necessary to have vcpkg and conan, for the following scripts to work.
