@@ -82,6 +82,7 @@ jobs:
     - name: Conan Install (BASH)
       run: |
         echo "CONAN INSTALL gmp DEPENDENCY"
+        conan profile detect
         conan install conanfile.txt --output-folder=build-conan --build=missing
         cp WORKSPACE-conan WORKSPACE 
       shell: bash
