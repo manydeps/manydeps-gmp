@@ -6,6 +6,9 @@
 
 [![Bazel GMP Native on Windows, Linux and OSX-MACOS](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-native-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-native-multi-platform.yml)
 
+[![Bazel GMP Conan on Windows, Linux and OSX-MACOS](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-conan-multi-platform.yml/badge.svg)](https://github.com/manydeps/manydeps-gmp/actions/workflows/bazel-conan-multi-platform.yml)
+
+
 This is a demonstration project from the [ManyDeps](https://github.com/manydeps),
 for the C/C++ GMP library using package managers (vcpkg and conan) on windows/linux.
 
