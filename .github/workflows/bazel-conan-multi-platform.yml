@@ -55,54 +55,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: ilammy/msvc-dev-cmd@v1
-    - name: Git Submodules
-      run: |
-        git submodule update --init --recursive
-        git pull --recurse-submodules
-        cp WORKSPACE-native WORKSPACE
-
-    - name: GMP Build Native (BASH-UBUNTU)
-      if: contains(matrix.os, 'ubuntu')
-      run: |
-        echo "RUNNING SCRIPT ./gmp-install.sh"
-        ./gmp-install.sh
-      shell: bash
-
-    - name: GMP Build Native (BASH-MACOS-OSX)
-      if: contains(matrix.os, 'macos')
-      run: |
-        echo "RUNNING SCRIPT ./gmp-install.sh"
-        ./gmp-install.sh
-      shell: bash
-
-    - name: GMP Build Native (CMD)
-      if: contains(matrix.os, 'windows')
-      run: |
-        echo "RUNNING MANUAL BUILD"
-        cd .\thirdparty\mpir\msvc\vs22\
-        echo "building generic version"
-        cmd /c msbuild.bat gc LIB x64 Release
-        echo "FINISHED build in CMD!"
-      shell: cmd
-
-    - name: GMP Check Native Library (CMD)
-      if: contains(matrix.os, 'windows')
-      run: |
-        echo "CHECKING lib type (EXPECTED LIBCMT or /MT)"
-        echo "ls thirdparty\mpir"
-        ls thirdparty\mpir
-        echo "lib /list thirdparty\mpir\lib\x64\Release\mpir.lib"
-        lib /list thirdparty\mpir\lib\x64\Release\mpir.lib
-        echo "dumpbin /directives thirdparty\mpir\lib\x64\Release\mpir.lib"
-        dumpbin /directives thirdparty\mpir\lib\x64\Release\mpir.lib
-        echo "FINISHED build in CMD!"
-      shell: cmd
-
 
     - name: Get python dependencies
       shell: bash
       run: |
         python3 -m pip install conan
+
     - name: Get bazel (WINDOWS)
       if: contains(matrix.os, 'windows')
       shell: bash
@@ -120,6 +78,13 @@ jobs:
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
         bash -i -c "nvm install --lts"
         bash -i -c "sudo npm install -g @bazel/bazelisk"
+
+    - name: Conan Install (BASH)
+      run: |
+        echo "CONAN INSTALL gmp DEPENDENCY"
+        conan install conanfile.txt --output-folder=build-conan --build=missing
+        cp WORKSPACE-conan WORKSPACE 
+      shell: bash
 
     - name: Build (WINDOWS)
       if: contains(matrix.os, 'windows')

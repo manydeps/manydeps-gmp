@@ -16,5 +16,5 @@ cc_binary(
         "src/**/*.cpp"
     ]),
     #deps = ["//include:manydeps-gmp-lib", ":gmp-all"]
-    deps = ["//include:manydeps-gmp-lib", "@gmp//:lib"]
+    deps = ["//include:manydeps-gmp-lib", "@gmp//:gmp"]
 )

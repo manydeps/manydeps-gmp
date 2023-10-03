@@ -12,5 +12,5 @@ cc_library(
     ]),
     include_prefix = "manydeps-gmp-lib/",
     #deps = ["//:gmp-all"],
-    deps = ["@gmp//:lib"]
+    deps = ["@gmp//:gmp"]
 )

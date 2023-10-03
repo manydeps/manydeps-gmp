@@ -9,11 +9,11 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # =========================
 # If using thirdparty build
 # =========================
-new_local_repository(
-    name = "gmp",
-    path = "./thirdparty",
-    build_file = "gmp.BUILD",
-)
+#new_local_repository(
+#    name = "gmp",
+#    path = "./thirdparty",
+#    build_file = "gmp.BUILD",
+#)
 
 http_archive(
     name = "catch2",
@@ -58,3 +58,6 @@ load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
 bazel_skylib_workspace()
 
+load("@//build-conan:dependencies.bzl", "load_conan_dependencies")
+
+load_conan_dependencies()
