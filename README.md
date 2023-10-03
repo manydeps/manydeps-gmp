@@ -173,7 +173,59 @@ meaning that we need to add `static_link_msvcrt` configuration on .bazelrc:
 
 Ongoing work...
 
-## License
+## Generating SBOM with Conan and CycloneDX extension
+
+Conan automatically generates a Software Bill of Materials (SBOM):
+
+```
+conan config install https://github.com/conan-io/conan-extensions.git
+conan sbom:cyclonedx --format 1.4_json .
+```
+
+```jsonc
+{
+  "components": [
+    // ...
+    {
+      "bom-ref": "pkg:conan/gmp@6.3.0?rref=f925bd29cb8f70972507c699d681de85",
+      "description": "GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://gmplib.org"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0"
+          }
+        },
+        {
+          "license": {
+            "id": "LGPL-3.0"
+          }
+        }
+      ],
+      "name": "gmp",
+      "purl": "pkg:conan/gmp@6.3.0?rref=f925bd29cb8f70972507c699d681de85",
+      "type": "library",
+      "version": "6.3.0"
+    }
+  ],
+  "dependencies": [
+    // ...
+  ],
+  "metadata": {
+    // ...
+  },
+  "serialNumber": "urn:uuid:42ecb73d-d67e-41e3-817f-ce68dd582711",
+  "version": 1,
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4"
+}
+```
 
 ## License
 

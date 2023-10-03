@@ -110,3 +110,8 @@ jobs:
     - name: Test (OSX-Macos)
       if: contains(matrix.os, 'macos')
       run: bazel test ... --config linux_${{ matrix.c_compiler }}
+
+    - name: Generate SBOM with Conan/CycloneDX extension
+      run: |
+        conan config install https://github.com/conan-io/conan-extensions.git 
+        conan sbom:cyclonedx --format 1.4_json .
