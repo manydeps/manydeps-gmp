@@ -113,5 +113,6 @@ jobs:
 
     - name: Generate SBOM with Conan/CycloneDX extension
       run: |
+        pip install cyclonedx-python-lib
         conan config install https://github.com/conan-io/conan-extensions.git 
         conan sbom:cyclonedx --format 1.4_json .
