@@ -1,5 +1,8 @@
-// SPDX-License-Identifier: LGPLv3
-// Copyright (C) 2023 - depbox
+// SPDX-License-Identifier: GPL-3.0-or-later OR LGPL-3.0-or-later
+// Copyright (C) 2023 - manydeps - https://github.com/manydeps
+//
+// License is a combination of:
+// - GMP (GPL-2.0-or-later OR LGPL-3.0-or-later)
 
 #pragma once
 
